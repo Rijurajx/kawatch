@@ -24,7 +24,7 @@ const TransactionBar = ({ setPrediction, setProbability, setBulkResults }) => {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/predict', data);
+      const response = await axios.post('https://kawatch-server.onrender.com/predict', data);
       setPrediction(response.data.prediction);
       setProbability(response.data.probability);
       setBulkResults([]); // Clear bulk results
@@ -40,7 +40,7 @@ const TransactionBar = ({ setPrediction, setProbability, setBulkResults }) => {
     formData.append('file', e.target.file.files[0]);
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/bulk_predict', formData, {
+      const response = await axios.post('https://kawatch-server.onrender.com/bulk_predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
